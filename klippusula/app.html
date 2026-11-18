@@ -1,0 +1,439 @@
+<title>KlipPusula</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Klip kampanyası kurallarını kontrol listesine çeviren ve net kazancını hesaplayan ücretsiz araç.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: pre-flight board — rules on the left become a checklist, money on the right; one quiet header, no hero. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --ink:#13201D; --muted:#56675F; --line:#D3DDD8;
+  --accent:#0B7A63; --accent-ink:#FFFFFF; --accent-soft:#DDF1EA;
+  --signal:#A86A10; --signal-soft:#FBF0DD; --bad:#B53A33; --bad-soft:#F8E3E1;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1513; --surface:#151F1C; --ink:#E3ECE8; --muted:#93A7A0; --line:#28362F;
+  --accent:#3BC29E; --accent-ink:#06231B; --accent-soft:#12302A;
+  --signal:#EDB057; --signal-soft:#2E2414; --bad:#EE7B72; --bad-soft:#341A18; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E1513; --surface:#151F1C; --ink:#E3ECE8; --muted:#93A7A0; --line:#28362F;
+  --accent:#3BC29E; --accent-ink:#06231B; --accent-soft:#12302A;
+  --signal:#EDB057; --signal-soft:#2E2414; --bad:#EE7B72; --bad-soft:#341A18; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 40px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:40px;height:40px;color:var(--accent);flex:none}
+.brand h1{font-size:30px;font-weight:800}
+.lead{margin:4px 0 0;color:var(--muted);max-width:62ch}
+.badge{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+
+.board{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:20px;align-items:start}
+@media (max-width:920px){.board{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:16px;min-width:0}
+.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+.panel h2{font-size:21px;font-weight:700}
+.step{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+label.lbl{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.hint{font-size:13px;color:var(--muted);margin:0}
+textarea,input[type=number],input[type=datetime-local]{width:100%;font:inherit;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:190px;resize:vertical;font-family:var(--f-mono);font-size:13px;line-height:1.5}
+input[type=number],input[type=datetime-local]{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-weight:600;border-radius:10px;padding:9px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:hover{filter:brightness(1.05)}
+.toast{font-size:13px;color:var(--accent);min-height:1em}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.fact dt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.fact dd{margin:2px 0 0;font-family:var(--f-mono);font-size:16px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fact.missing dd{color:var(--signal);font-family:var(--f-body);font-size:14px}
+
+.progress{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+
+ul.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ul.checks li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:9px 10px;border-radius:10px;border:1px solid var(--line)}
+ul.checks li.done{background:var(--accent-soft);border-color:transparent}
+ul.checks li.done .txt{text-decoration:line-through;text-decoration-color:var(--muted)}
+ul.checks input{margin-top:4px;width:17px;height:17px;accent-color:var(--accent)}
+ul.checks .txt{min-width:0;overflow-wrap:anywhere}
+ul.checks .src{display:block;font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:2px}
+.tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.tag.k{background:var(--accent-soft);color:var(--accent)}
+.tag.w{background:var(--signal-soft);color:var(--signal)}
+.tag.g{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.warn{background:var(--signal-soft);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:14px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:420px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.result{border-top:1px dashed var(--line);padding-top:14px;display:grid;gap:8px}
+.line{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.line span:last-child{font-family:var(--f-mono)}
+.line.minus span:last-child{color:var(--muted)}
+.net{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;padding:12px 14px;border-radius:12px;background:var(--accent-soft)}
+.net b{font-family:var(--f-display);font-size:32px;font-weight:800;font-variant-numeric:tabular-nums}
+.net small{font-family:var(--f-mono);color:var(--muted)}
+.net.below{background:var(--bad-soft)}
+.state{font-size:13px}
+.state.bad{color:var(--bad)} .state.ok{color:var(--accent)}
+
+ol.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+ol.timeline li{display:grid;grid-template-columns:18px 1fr;gap:12px;position:relative;padding-bottom:14px}
+ol.timeline li::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--surface);margin-top:5px;z-index:1}
+ol.timeline li:not(:last-child)::after{content:"";position:absolute;left:6px;top:18px;bottom:0;width:2px;background:var(--line)}
+ol.timeline li.end::before{background:var(--accent)}
+ol.timeline .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+ol.timeline .what{font-weight:600}
+
+.pro{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border:1px dashed var(--line);border-radius:14px;padding:18px 20px}
+.pro h3{font-size:18px}
+.pro p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+footer{color:var(--muted);font-size:13px;max-width:80ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 7 L24 20 L20 33 L16 20 Z" fill="currentColor"/><circle cx="20" cy="20" r="2.4" fill="var(--surface)"/></svg>
+        <h1>KlipPusula</h1>
+      </div>
+      <p class="lead">Kampanya kurallarını yapıştır, yüklemeden önce kontrol listeni al. Net kazancını ve ödemenin hangi gün bakiyene düşeceğini gör.</p>
+    </div>
+    <span class="badge">Ücretsiz · veriler tarayıcında kalır</span>
+  </header>
+
+  <div class="board">
+    <section class="panel" aria-labelledby="h-rules">
+      <div class="panel-head"><h2 id="h-rules">Kural kontrolü</h2><span class="step">1 · yüklemeden önce</span></div>
+      <div>
+        <label class="lbl" for="rules">Kampanya sayfasındaki kural metni</label>
+        <textarea id="rules" spellcheck="false"></textarea>
+        <p class="hint">İngilizce ve Türkçe metinleri okur. Aşağıdaki metin bir örnektir; kendi kampanyanın metnini yapıştır.</p>
+      </div>
+      <div class="row">
+        <button class="primary" id="btn-parse" type="button">Kontrol listesini çıkar</button>
+        <button id="btn-send" type="button">Hesaplayıcıya aktar</button>
+        <button id="btn-copy" type="button">Listeyi kopyala</button>
+        <span class="toast" id="toast" role="status"></span>
+      </div>
+      <dl class="facts" id="facts"></dl>
+      <div class="progress"><span id="prog-txt">0/0 hazır</span><div class="bar"><i id="prog-bar"></i></div></div>
+      <ul class="checks" id="checks"></ul>
+    </section>
+
+    <section class="panel" aria-labelledby="h-calc">
+      <div class="panel-head"><h2 id="h-calc">Kazanç hesabı</h2><span class="step">2 · paylaştıktan sonra</span></div>
+      <div class="grid2">
+        <div><label class="lbl" for="views">Doğrulanmış görüntülenme</label><input id="views" type="number" min="0" step="1000" value="100000"></div>
+        <div><label class="lbl" for="rate">1.000 görüntülenme başına ($)</label><input id="rate" type="number" min="0" step="0.05" value="1"></div>
+        <div><label class="lbl" for="fee">Platform payı (%)</label><input id="fee" type="number" min="0" max="100" step="1" value="10"></div>
+        <div><label class="lbl" for="cap">Klip başına tavan ($)</label><input id="cap" type="number" min="0" step="10" value="200"></div>
+        <div><label class="lbl" for="minpay">Asgari ödeme ($)</label><input id="minpay" type="number" min="0" step="1" value="2"></div>
+        <div><label class="lbl" for="fx">Dolar kuru (TL)</label><input id="fx" type="number" min="0" step="0.01" value="42"></div>
+      </div>
+      <p class="hint">Tavan yoksa 0 yaz. Kuru güncel değerle değiştir.</p>
+      <div class="result" aria-live="polite">
+        <div class="line"><span>Brüt kazanç</span><span id="o-gross">–</span></div>
+        <div class="line minus"><span id="o-cap-lbl">Tavan kesintisi</span><span id="o-cap">–</span></div>
+        <div class="line minus"><span>Platform payı</span><span id="o-fee">–</span></div>
+        <div class="net" id="o-net-box"><span>Net</span><b id="o-net">–</b><small id="o-tl">–</small></div>
+        <span class="state" id="o-state"></span>
+      </div>
+
+      <div class="panel-head" style="margin-top:6px"><h3 style="font-size:17px">Ödeme takvimi</h3><span class="step">tahmini</span></div>
+      <div class="grid2">
+        <div><label class="lbl" for="posted">Paylaşım zamanı</label><input id="posted" type="datetime-local"></div>
+        <div><label class="lbl" for="submitmin">Link gönderme süresi (dk)</label><input id="submitmin" type="number" min="0" step="5" value="30"></div>
+        <div><label class="lbl" for="approve">Onay (gün)</label><input id="approve" type="number" min="0" step="1" value="1"></div>
+        <div><label class="lbl" for="earn">Onaydan sonra kazanç (gün)</label><input id="earn" type="number" min="0" step="1" value="7"></div>
+        <div><label class="lbl" for="hold">Bekleme (gün)</label><input id="hold" type="number" min="0" step="1" value="3"></div>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+      <p class="hint">Varsayılan süreler yaygın bir kampanya akışına göre. Her kampanyanın sayfasındaki süre geçerli.</p>
+    </section>
+  </div>
+
+  <aside class="pro">
+    <div>
+      <h3>KlipPusula Pro yakında</h3>
+      <p>Klip defteri, kampanyaları saat başı kazanca göre karşılaştırma ve tablo olarak dışa aktarma. Aylık 49 TL.</p>
+    </div>
+    <span class="badge">Hazırlanıyor</span>
+  </aside>
+
+  <footer>
+    KlipPusula bağımsız bir araçtır. Hiçbir kampanya platformu, oyun şirketi veya yayıncıyla bağlantısı yoktur. Rakamlar örnektir ve kazanç garantisi vermez; her zaman kampanya sayfasındaki şartlar geçerlidir. Yalnızca izinli görüntüyle klip üret. Girdiğin metin ve sayılar hiçbir sunucuya gönderilmez.
+  </footer>
+</div>
+
+<script>
+(function(){
+  const SAMPLE = `ÖRNEK KAMPANYA (gerçek değil)
+Rate: $1.00 per 1,000 views. Max payout $200 per clip. Minimum payout $2.
+Platforms: TikTok, YouTube Shorts, Instagram Reels.
+Clips must be 15-60 seconds long.
+Include #sabahyayini and tag @ornekyayinci in your caption.
+Submit your link within 30 minutes of posting.
+No watermarks. Do not reupload the full stream.
+Only use footage from the provided folder.`;
+
+  const $ = s => document.querySelector(s);
+  const store = {
+    get(k){ try { return localStorage.getItem('kp:'+k); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem('kp:'+k, v); } catch(e){} }
+  };
+  const fmtUSD = n => '$' + new Intl.NumberFormat('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+  const fmtTL = n => new Intl.NumberFormat('tr-TR',{maximumFractionDigits:0}).format(n) + ' TL';
+  const fmtDate = d => d.toLocaleString('tr-TR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+
+  function num(s){
+    if (s == null) return NaN;
+    s = String(s).trim().replace(/\s/g,'');
+    const m = s.match(/^(\d+)(?:[.,](\d{1,2}))?$/);
+    if (m) return parseFloat(m[1] + (m[2] ? '.' + m[2] : ''));
+    return parseFloat(s.replace(/[.,](?=\d{3}(?!\d))/g,'').replace(',','.'));
+  }
+  const AMT = '(\\d{1,3}(?:[.,]\\d{3})+|\\d+)(?:[.,](\\d{1,2}))?(?!\\d)';
+  const MONEY = new RegExp('(?:US\\$|\\$|usd\\s?)\\s?' + AMT + '|' + AMT + '\\s?(?:\\$|usd|dolar|dollars?)', 'i');
+  function money(str){
+    const m = str.match(MONEY);
+    if (!m) return null;
+    const whole = m[1] || m[3], dec = m[1] ? m[2] : m[4];
+    return num(whole) + (dec ? parseFloat('0.' + dec) : 0);
+  }
+  function moneyAfter(sentence, re){
+    const k = sentence.search(re);
+    if (k < 0) return null;
+    return money(sentence.slice(k)) ?? money(sentence);
+  }
+  const sentences = t => t.split(/\n+|(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ#@"'(])/).map(s => s.trim()).filter(Boolean);
+
+  const PLATFORMS = [
+    ['TikTok', /tik\s?tok/i], ['YouTube Shorts', /youtube|\bshorts\b/i], ['Instagram Reels', /instagram|\breels?\b/i],
+    ['X', /x\.com|twitter|(?:^|[\s,(/])X(?=[\s,.;)/]|$)/], ['Facebook', /facebook|\bfb\b/i], ['Snapchat', /snapchat/i]
+  ];
+  const RULE_RE = /\b(must|required?|requires|need to|should|do not|don't|never|not allowed|prohibited|only|no)\b|zorunlu|gerekli|olmal[ıi]|yasak|izin verilmez|kullanma|yapma|sadece|yaln[ıi]zca/i;
+  const SEC = '(?:s\\b|sec\\b|secs\\b|seconds?\\b|saniye|sn\\b)';
+
+  function parse(text){
+    const out = { platforms:[], tags:[], mentions:[], rules:[], rate:null, cap:null, minpay:null, dur:null, submit:null, watermark:false };
+    const ss = sentences(text);
+    const used = new Set();
+    for (const s of ss){
+      const low = s.toLowerCase();
+      if (out.rate == null && (/(per|\/|başına|for every)\s*1\s?k\b|cpm|rpm/i.test(s) || (/(1[.,]?000|thousand|\bbin\b|1\s?k\b)/i.test(s) && /(view|görüntülen|izlen)/i.test(s)))){
+        const v = money(s); if (v != null){ out.rate = v; used.add(s); }
+      }
+      if (out.cap == null && /(max(imum)?|cap|up to|tavan|en fazla|en çok)/i.test(s) && /(clip|video|klip|post|gönderi|payout|ödeme)/i.test(s) && !/min(imum)?\s*payout/i.test(s)){
+        const v = moneyAfter(s, /(max(imum)?|cap|up to|tavan|en fazla|en çok)/i); if (v != null && v !== out.rate){ out.cap = v; used.add(s); }
+      }
+      if (out.minpay == null && /(min(imum)?\s*(payout|withdraw\w*|cash\s?out)|asgari|minimum ödeme|ödeme eşiği|eşik)/i.test(s)){
+        const v = moneyAfter(s, /(min(imum)?\s*(payout|withdraw|cash)|asgari|minimum ödeme|ödeme eşiği|eşik)/i); if (v != null){ out.minpay = v; used.add(s); }
+      }
+      if (out.submit == null && /(submit|link|send|gönder|paylaş|post)/i.test(s)){
+        let m = s.match(/(\d{1,3})\s*(minutes?|mins?\b|dakika|dk\b)/i);
+        if (m){ out.submit = parseInt(m[1],10); used.add(s); }
+        else if ((m = s.match(/(\d{1,2})\s*(hours?|hrs?\b|saat)/i))){ out.submit = parseInt(m[1],10)*60; used.add(s); }
+      }
+      if (/watermark|filigran/i.test(low)) out.watermark = true;
+      PLATFORMS.forEach(([name, re]) => { if (re.test(s) && !out.platforms.includes(name)) out.platforms.push(name); });
+    }
+    let m;
+    const range = new RegExp('(\\d{1,3})\\s*(?:-|–|—|to|ile|ila)\\s*(\\d{1,3})\\s*' + SEC, 'i');
+    const minD = new RegExp('(?:min(?:imum)?|at least|en az)\\s*(?:of\\s*)?(\\d{1,3})\\s*' + SEC, 'i');
+    const maxD = new RegExp('(?:max(?:imum)?|no longer than|under|at most|up to|en fazla|en çok)\\s*(\\d{1,3})\\s*' + SEC, 'i');
+    if ((m = text.match(range))) out.dur = { min:+m[1], max:+m[2] };
+    else {
+      const a = text.match(minD), b = text.match(maxD);
+      if (a || b) out.dur = { min: a ? +a[1] : null, max: b ? +b[1] : null };
+    }
+    const tagRe = /(^|[^\p{L}\p{N}_&])#([\p{L}\p{N}_]{2,})/gu;
+    while ((m = tagRe.exec(text))) { const t = '#' + m[2]; if (!out.tags.includes(t)) out.tags.push(t); }
+    const menRe = /(^|[\s(,;:])@([A-Za-z0-9_.]{2,30})/g;
+    while ((m = menRe.exec(text))) { const t = '@' + m[2].replace(/\.+$/,''); if (!out.mentions.includes(t)) out.mentions.push(t); }
+    for (const s of ss){
+      if (used.has(s) || /^(örnek kampanya|example campaign)/i.test(s)) continue;
+      if (/^(platforms?|platformlar)\s*:/i.test(s)) continue;
+      if (RULE_RE.test(s) && !/(#|@)\w/.test(s) && !range.test(s) && !minD.test(s) && !maxD.test(s)){
+        out.rules.push(s.length > 180 ? s.slice(0,177) + '…' : s);
+        if (out.rules.length >= 8) break;
+      }
+    }
+    return out;
+  }
+
+  let current = null;
+  function itemsFrom(p){
+    const items = [];
+    if (p.platforms.length) items.push({ t:'Şu platformlardan birine yükle: ' + p.platforms.join(', '), tag:'platform', k:'k' });
+    else items.push({ t:'Platform bulunamadı. İzin verilen platformu kampanya sayfasında kontrol et.', tag:'bulunamadı', k:'w' });
+    if (p.dur){
+      const d = p.dur;
+      const txt = d.min != null && d.max != null ? `Klip ${d.min}–${d.max} saniye arası olmalı` : d.min != null ? `Klip en az ${d.min} saniye olmalı` : `Klip en fazla ${d.max} saniye olmalı`;
+      items.push({ t: txt, tag:'süre', k:'k' });
+    } else items.push({ t:'Süre kuralı bulunamadı. Kampanya sayfasında kontrol et.', tag:'bulunamadı', k:'w' });
+    p.tags.forEach(t => items.push({ t:'Açıklamaya ' + t + ' ekle', tag:'hashtag', k:'k' }));
+    p.mentions.forEach(t => items.push({ t:'Açıklamada ' + t + ' hesabını etiketle', tag:'etiket', k:'k' }));
+    if (p.submit != null){
+      const s = p.submit >= 60 && p.submit % 60 === 0 ? (p.submit/60) + ' saat' : p.submit + ' dakika';
+      items.push({ t:`Paylaştıktan sonra ${s} içinde linki kampanyaya gönder`, tag:'süre sınırı', k:'w' });
+    }
+    p.rules.forEach(r => items.push({ t:'Kurala uy', src:r, tag:'kural', k:'k' }));
+    if (p.watermark && !p.rules.some(r => /watermark|filigran/i.test(r))) items.push({ t:'Filigran kuralı var. Filigransız çıktı veren bir araç kullan.', tag:'kural', k:'k' });
+    items.push({ t:'Kampanyanın kalan bütçesini kontrol et', tag:'genel', k:'g' });
+    items.push({ t:'Yüklemeden önce klibi baştan sona izle: ilk kelime, kırpma, altyazı', tag:'genel', k:'g' });
+    return items;
+  }
+
+  function renderFacts(p){
+    const f = $('#facts'); f.textContent = '';
+    const add = (label, val) => {
+      const d = document.createElement('div'); d.className = 'fact' + (val == null ? ' missing' : '');
+      const dt = document.createElement('dt'); dt.textContent = label;
+      const dd = document.createElement('dd'); dd.textContent = val == null ? 'Bulunamadı' : val;
+      d.append(dt, dd); f.append(d);
+    };
+    add('Oran / 1.000', p.rate != null ? fmtUSD(p.rate) : null);
+    add('Klip tavanı', p.cap != null ? fmtUSD(p.cap) : null);
+    add('Asgari ödeme', p.minpay != null ? fmtUSD(p.minpay) : null);
+    add('Link süresi', p.submit != null ? p.submit + ' dk' : null);
+  }
+
+  function renderChecks(items){
+    const ul = $('#checks'); ul.textContent = '';
+    items.forEach((it, i) => {
+      const li = document.createElement('li');
+      const cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'chk-' + i;
+      const lab = document.createElement('label'); lab.className = 'txt'; lab.htmlFor = cb.id; lab.textContent = it.t;
+      if (it.src){ const s = document.createElement('span'); s.className = 'src'; s.textContent = '“' + it.src + '”'; lab.append(s); }
+      const tg = document.createElement('span'); tg.className = 'tag ' + it.k; tg.textContent = it.tag;
+      cb.addEventListener('change', () => { li.classList.toggle('done', cb.checked); progress(); });
+      li.append(cb, lab, tg); ul.append(li);
+    });
+    progress();
+  }
+  function progress(){
+    const all = document.querySelectorAll('#checks input'), on = document.querySelectorAll('#checks input:checked');
+    $('#prog-txt').textContent = `${on.length}/${all.length} hazır`;
+    $('#prog-bar').style.width = all.length ? (on.length / all.length * 100) + '%' : '0';
+  }
+
+  function runParse(){
+    const text = $('#rules').value;
+    store.set('rules', text);
+    current = parse(text);
+    renderFacts(current);
+    current.items = itemsFrom(current);
+    renderChecks(current.items);
+  }
+
+  function toast(msg){ const t = $('#toast'); t.textContent = msg; clearTimeout(toast.h); toast.h = setTimeout(() => t.textContent = '', 2500); }
+
+  $('#btn-parse').addEventListener('click', () => { runParse(); toast('Liste güncellendi'); });
+  $('#btn-send').addEventListener('click', () => {
+    if (!current) runParse();
+    let n = 0;
+    if (current.rate != null){ $('#rate').value = current.rate; n++; }
+    if (current.cap != null){ $('#cap').value = current.cap; n++; }
+    if (current.minpay != null){ $('#minpay').value = current.minpay; n++; }
+    if (current.submit != null){ $('#submitmin').value = current.submit; n++; }
+    calc();
+    toast(n ? `${n} değer hesaplayıcıya aktarıldı` : 'Aktarılacak değer bulunamadı');
+  });
+  $('#btn-copy').addEventListener('click', () => {
+    if (!current) runParse();
+    const text = current.items.map(it => '[ ] ' + it.t + (it.src ? ': ' + it.src : '')).join('\n');
+    const fallback = () => { const ta = $('#rules'); const old = ta.value; ta.value = text; ta.select(); toast('Kopyalanamadı. Liste metin kutusunda seçili, elle kopyala.'); setTimeout(() => { ta.value = old; }, 8000); };
+    try {
+      navigator.clipboard.writeText(text).then(() => toast('Liste kopyalandı'), fallback);
+    } catch(e){ fallback(); }
+  });
+
+  const CALC_IDS = ['views','rate','fee','cap','minpay','fx','submitmin','approve','earn','hold'];
+  function val(id){ const v = parseFloat($('#'+id).value); return isFinite(v) ? v : 0; }
+  function calc(){
+    CALC_IDS.forEach(id => store.set(id, $('#'+id).value));
+    const views = Math.max(0, val('views')), rate = Math.max(0, val('rate')), fee = Math.min(100, Math.max(0, val('fee')));
+    const cap = Math.max(0, val('cap')), minpay = Math.max(0, val('minpay')), fx = Math.max(0, val('fx'));
+    const gross = views / 1000 * rate;
+    const capped = cap > 0 ? Math.min(gross, cap) : gross;
+    const capCut = gross - capped;
+    const feeAmt = capped * fee / 100;
+    const net = capped - feeAmt;
+    $('#o-gross').textContent = fmtUSD(gross);
+    $('#o-cap').textContent = capCut > 0 ? '− ' + fmtUSD(capCut) : cap > 0 ? 'Tavana ulaşılmadı' : 'Tavan yok';
+    $('#o-fee').textContent = '− ' + fmtUSD(feeAmt);
+    $('#o-net').textContent = fmtUSD(net);
+    $('#o-tl').textContent = fx > 0 ? '≈ ' + fmtTL(net * fx) : '';
+    const st = $('#o-state'), box = $('#o-net-box');
+    if (minpay > 0 && net < minpay){
+      st.className = 'state bad'; st.textContent = `Asgari ödeme eşiğinin (${fmtUSD(minpay)}) altında. Bu klipten ödeme çıkmaz.`; box.classList.add('below');
+    } else {
+      box.classList.remove('below'); st.className = 'state ok';
+      st.textContent = capCut > 0 ? `Tavana ulaşıldı. ${new Intl.NumberFormat('tr-TR').format(Math.ceil(cap / rate * 1000))} görüntülenmeden sonrası ödenmez.` : 'Ödeme eşiğinin üstünde.';
+    }
+    timeline();
+  }
+
+  function timeline(){
+    const raw = $('#posted').value;
+    store.set('posted', raw);
+    const start = raw ? new Date(raw) : new Date();
+    if (isNaN(start)) return;
+    const addM = (d, m) => new Date(d.getTime() + m * 60000);
+    const addD = (d, n) => new Date(d.getTime() + n * 86400000);
+    const sub = addM(start, val('submitmin'));
+    const appr = addD(start, val('approve'));
+    const earnEnd = addD(appr, val('earn'));
+    const bal = addD(earnEnd, val('hold'));
+    const steps = [
+      [start, 'Klibi paylaş', ''],
+      [sub, 'Link için son an', 'Bu saatten sonra gönderilen link kabul edilmeyebilir.'],
+      [appr, 'Onay', 'Klip kampanya tarafından onaylanır.'],
+      [earnEnd, 'Kazanç sayımı biter', `Onaydan sonraki ${val('earn')} gün içindeki görüntülenmeler sayılır.`],
+      [bal, 'Bakiyede', `${val('hold')} günlük beklemeden sonra ödeme bakiyene düşer.`]
+    ];
+    const ol = $('#timeline'); ol.textContent = '';
+    steps.forEach(([d, what, note], i) => {
+      const li = document.createElement('li'); if (i === steps.length - 1) li.className = 'end';
+      const box = document.createElement('div');
+      const w = document.createElement('div'); w.className = 'when'; w.textContent = fmtDate(d);
+      const t = document.createElement('div'); t.className = 'what'; t.textContent = what;
+      box.append(w, t);
+      if (note){ const n = document.createElement('div'); n.className = 'hint'; n.textContent = note; box.append(n); }
+      li.append(box);
+      ol.append(li);
+    });
+  }
+
+  function localISO(d){ const p = n => String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`; }
+
+  // init
+  $('#rules').value = store.get('rules') || SAMPLE;
+  CALC_IDS.forEach(id => { const v = store.get(id); if (v !== null && v !== '') $('#'+id).value = v; });
+  $('#posted').value = store.get('posted') || localISO(new Date());
+  CALC_IDS.concat(['posted']).forEach(id => $('#'+id).addEventListener('input', calc));
+  runParse();
+  calc();
+})();
+</script>
