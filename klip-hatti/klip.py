@@ -66,11 +66,19 @@ def _llama(p):
     return json.loads(r["choices"][0]["message"]["content"])
 def puan(text):
     p = 'Bu konusma parcasi tek basina 9:16 kisa videoda izleyiciyi tutar mi? Sadece JSON ver: {"score": 1-10 tam sayi, "hook": "en fazla 8 kelimelik baslik"}\n\n' + text[:1500]
-    body = json.dumps({"model": os.environ.get("KLIP_MODEL", "qwen3clip"), "messages": [{"role": "user", "content": p}], "stream": False, "format": "json"}).encode()
+    model = os.environ.get("KLIP_MODEL", "qwen3clip")
+    body = json.dumps({"model": model, "messages": [{"role": "user", "content": p}], "stream": False, "format": "json", "keep_alive": "30m"}).encode()
     try:
-        r = urllib.request.urlopen(urllib.request.Request("http://127.0.0.1:11434/api/chat", body, {"Content-Type": "application/json"}), timeout=300)
+        # buyuk model ilk cagrida diskten yuklenir; bekleme suresi uzun tutulur
+        r = urllib.request.urlopen(urllib.request.Request("http://127.0.0.1:11434/api/chat", body, {"Content-Type": "application/json"}), timeout=int(os.environ.get("KLIP_LLM_TIMEOUT", "900")))
         return json.loads(json.loads(r.read())["message"]["content"])
-    except OSError:
+    except OSError as e:
+        detay = e.read().decode(errors="replace")[:300] if hasattr(e, "read") else str(e)
+        try:
+            import llama_cpp  # noqa: F401  (yalnizca kuruluysa yedek yola gec)
+        except ImportError:
+            sys.exit(f"Ollama ile puanlama basarisiz ({model}): {detay}\n"
+                     f"Kontrol: 'ollama list' modeli gosteriyor mu, 'ollama run {model} OK' calisiyor mu?")
         return _llama(p)  # ollama yoksa ayni modeli llama-cpp-python ile calistir
 P = []
 for a, b, t in C[::max(1, len(C)//24)]:
