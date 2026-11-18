@@ -30,12 +30,23 @@ Betik Python, FFmpeg ve Ollama'yı winget ile kurar. Ardından konuşma modeli o
 | `KLIP_WHISPER` | `small` | Konuşma modeli. Güçlü makinede `large-v3`. |
 | `KLIP_MODEL` | `qwen3clip` | Ollama model adı. |
 | `KLIP_THREADS` | çekirdek sayısının yarısı | Yazıya çevirme ve puanlama için iş parçacığı. |
+| `KLIP_DUZEN` | `konusma` | `konusma`: konuşmacının yüzüne göre 9:16 kırpar. `oyun`: üstte yüz kamerası, altta oyunun ortası. Yüz kamerası yoksa oyunun ortası tam dikey kırpılır. |
+| `KLIP_YUZ_ORANI` | `0.8` | Bir pencerenin aday sayılması için yayıncının/konuşmacının göründüğü süre oranı. |
 
 Ollama çalışmıyorsa `klip.py` aynı klasördeki `qwen3-4b.gguf` dosyasını llama-cpp-python ile kullanır.
 
+Yazıya çevirme sonucu videonun yanına `<video>.<model>.transkript.json` olarak kaydedilir. Aynı videoyu farklı ayarlarla tekrar işlerken bu adım atlanır (testte 313 sn yerine 79 sn).
+
+Oyun yayını örneği:
+
+```powershell
+$env:KLIP_DUZEN="oyun"; .\klip.cmd yayin.mp4 cikti 5
+```
+
 ## Bilinen sınırlar
 
-- Yüz kontrolü 3 saniyede bir yapılır. Klip içinde slayta geçilirse kırpma konuşmacıyı kaçırabilir. Her klibi yayından önce izleyin.
+- Yüz kontrolü her saniye yapılır ve yalnızca videonun tipik yüzüne (boyut, oyun düzeninde konum) benzeyen yüzler sayılır. Slayttaki fotoğraf yüzleri böylece elenir. Yine de her klibi yayından önce izleyin.
+- Oyun düzeni yüz kamerasının sabit durduğunu varsayar. Gerçek bir yayın kaydıyla henüz denenmedi.
 - Pencereler konuşma parçası sınırında başlar, bazen cümlenin ortasından. Gerekirse başlangıcı kaydırın.
 
 ## Test sonucu (18 Kasım 2026, 4 çekirdekli bulut makinesi)

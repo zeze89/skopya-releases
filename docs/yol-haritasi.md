@@ -39,7 +39,7 @@ Not: Tüm gelir rakamları yarışmacıların ve jürinin tahminleridir, doğrul
 
 ### Gün 1 (19 Kasım)
 - [ ] Oyunu oyna, radyo istasyonlarının şarkı listesini topla (kendi oynanış + topluluk listeleri).
-- [ ] **Rockstar'ın güncel içerik/monetizasyon politikasını oku → KARAR KAPISI #1.**
+- [x] **Rockstar'ın güncel içerik/monetizasyon politikasını oku → KARAR KAPISI #1.** (18 Kasım: politika 10 Ocak 2025 tarihli; para kazanılan videolar ne yasak ne izinli, ürün tanıtımı ticari sayılıyor. Sonuç: belirsiz. **Karar: kurallı göz yumma yolu.**)
 - [ ] KlipPusula'yı klipçi topluluklarında satış yapmadan, yardım olarak paylaş.
 - [ ] 30 yayıncıya ücretsiz 3 klip demo teklifi (konusu karar kapısı #1'e göre).
 
@@ -55,6 +55,8 @@ Not: Tüm gelir rakamları yarışmacıların ve jürinin tahminleridir, doğrul
 - [ ] Temiz Yayın Müziği için 2–3 bağımsız prodüktörle görüşme (ülke fark etmez).
 
 ### KARAR KAPISI #1 (Gün 1): Rockstar politikası para kazandıran oyun klibine izin veriyor mu?
+
+**Alınan karar (18 Kasım):** Sabah Teslim GTA yayınlarıyla çalışır; kurallar `docs/sozlesme-sabah-teslim.md` dosyasında. Rockstar politikası değişirse ya da bir müşteri kaldırma bildirimi alırsa bu karar yeniden açılır.
 - **İzin veriyor:** Sabah Teslim GTA yayınlarıyla devam eder; her klipte yayıncının yüzü, yorumu ve kurgu katkısı ağırlıklı olur.
 - **İzin vermiyor ya da belirsiz:** Sabah Teslim yalnızca yayıncının sohbet, IRL ve podcast yayınlarıyla ve kampanya sahibinin lisansladığı görüntüyle çalışır. KlipPusula, Dalga Ajansı ve Temiz Yayın Müziği bu karardan etkilenmez.
 
