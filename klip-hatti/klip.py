@@ -7,7 +7,9 @@ def log(m): print(f"[{time.time()-T0:6.1f}s] {m}", flush=True)
 # 1) konusmayi kelime kelime metne cevir (yerel, ucretsiz)
 from faster_whisper import WhisperModel
 pcm = subprocess.run(["ffmpeg","-v","error","-i",SRC,"-vn","-ac","1","-ar","16000","-f","f32le","-"], capture_output=True, check=True).stdout
-segs, info = WhisperModel("small", device="cpu", compute_type="int8").transcribe(
+WHISPER = os.environ.get("KLIP_WHISPER", "small")  # guclu makinede: large-v3
+THREADS = int(os.environ.get("KLIP_THREADS", max(4, (os.cpu_count() or 8) // 2)))
+segs, info = WhisperModel(WHISPER, device="cpu", compute_type="int8", cpu_threads=THREADS).transcribe(
     np.frombuffer(pcm, dtype=np.float32), vad_filter=True, word_timestamps=True)
 S = [dict(a=s.start, b=s.end, t=s.text.strip(), w=[(w.word, w.start, w.end) for w in s.words]) for s in segs]
 log(f"transkript: {len(S)} parca, {info.duration:.0f} sn ses")
@@ -39,12 +41,12 @@ def _llama(p):
     global _LL
     if _LL is None:
         from llama_cpp import Llama
-        _LL = Llama(model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "qwen3-4b.gguf"), n_ctx=4096, n_threads=os.cpu_count(), verbose=False)
+        _LL = Llama(model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "qwen3-4b.gguf"), n_ctx=4096, n_threads=THREADS, verbose=False)
     r = _LL.create_chat_completion(messages=[{"role": "user", "content": p}], temperature=0, response_format={"type": "json_object"}, max_tokens=120)
     return json.loads(r["choices"][0]["message"]["content"])
 def puan(text):
     p = 'Bu konusma parcasi tek basina 9:16 kisa videoda izleyiciyi tutar mi? Sadece JSON ver: {"score": 1-10 tam sayi, "hook": "en fazla 8 kelimelik baslik"}\n\n' + text[:1500]
-    body = json.dumps({"model": "qwen3clip", "messages": [{"role": "user", "content": p}], "stream": False, "format": "json"}).encode()
+    body = json.dumps({"model": os.environ.get("KLIP_MODEL", "qwen3clip"), "messages": [{"role": "user", "content": p}], "stream": False, "format": "json"}).encode()
     try:
         r = urllib.request.urlopen(urllib.request.Request("http://127.0.0.1:11434/api/chat", body, {"Content-Type": "application/json"}), timeout=300)
         return json.loads(json.loads(r.read())["message"]["content"])
