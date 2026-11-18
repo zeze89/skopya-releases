@@ -2,51 +2,51 @@
 
 Taramalar (UTC): 20:04, 21:52 — 18 Kasım 2026, GTA VI kategorisi. Kaynak: Twitch Helix API.
 Filtre: dil EN/DE/FR/ES/PT/IT, 50–500 anlık izleyici, 5 bin–300 bin takipçi, izleyici/takipçi ≤ %5 (sahte izleyici riski), 7/24 ve rozet/ödül toplama yayınları ile 30 saatten uzun yayınlar elendi.
-Sonuç: 469 aday; **196 kanal tüm taramalarda yayındaydı** (EN 103, PT 34, FR 22, DE 21, IT 8, ES 8). Tam liste: `yayinci-listesi-v2.csv`.
+Sonuç: 469 aday; **210 kanal tüm taramalarda yayındaydı** (EN 110, PT 38, DE 24, FR 21, ES 10, IT 7). Tam liste: `yayinci-listesi-v2.csv`.
 Sıralama: görüldüğü tarama sayısı, sonra yayın süresi, sonra ortalama izleyici. Uzun ve kesintisiz yayın = uzun gece kaydı = Sabah Teslim için en uygun.
 
 | # | Kanal | Dil | Taramada | Ort. izleyici | Yayın (saat) | Takipçi | Başlık (kısaltılmış) |
 |---|---|---|---|---|---|---|---|
-| 1 | [kingkongor](https://twitch.tv/kingkongor) | EN | 3/2 | 145 | 12.6 | 146,423 | [!Drops+Gift] GTA 6 LAUNCH IN NEW ZEALAND Pog-> !Opera🔴!Plus |
-| 2 | [bearpig](https://twitch.tv/bearpig) | EN | 3/2 | 55 | 12.3 | 114,276 | 🔴 GTA 6 is FINALLY Here! / Minimal Commentary / !yt 🔴 |
-| 3 | [codenamepizza](https://twitch.tv/codenamepizza) | EN | 3/2 | 122 | 12.2 | 19,882 | ⭐GTA 6 SPEEDRUN!⭐FULL STORY PLAYTHROUGH⭐ |
-| 4 | [hiro_o](https://twitch.tv/hiro_o) | PT | 3/2 | 90 | 12.1 | 39,399 | 😲🚨GTA VI à 60fps🚨😲❗SORTEIO GTA VI / R$550❗META ANIVERSÁRIO T |
-| 5 | [thexanos](https://twitch.tv/thexanos) | EN | 3/2 | 76 | 11.9 | 12,421 | GTA VI STARTS!!!!!!!!!!!!!!! - !brite !discord |
-| 6 | [allyz1nfps](https://twitch.tv/allyz1nfps) | PT | 3/2 | 134 | 11.6 | 23,261 | [1440p] 🚨FINALMENTE LANÇOU O GTA VI, LIVE INFINITA !pixathon |
-| 7 | [revirotto](https://twitch.tv/revirotto) | PT | 3/2 | 152 | 11.5 | 71,041 | FINALMENTE NO GTA 6! |
-| 8 | [flowstreetvi](https://twitch.tv/flowstreetvi) | ES | 3/2 | 129 | 11.5 | 18,580 | Jugando GTA VI en DIRECTO 🌴 POR FIN 🥹 |
-| 9 | [djmaloka](https://twitch.tv/djmaloka) | PT | 3/2 | 128 | 11.5 | 35,977 | [DROPS ON] GTA 6 🌴 DIA 1 - #572 - JOGANDO NO PS5 |
-| 10 | [zoioogamerr](https://twitch.tv/zoioogamerr) | PT | 3/2 | 60 | 11.4 | 82,847 | GTA 6 - PIXATHON ROLANDO !PIX !LOJA |
-| 11 | [thundershot](https://twitch.tv/thundershot) | EN | 3/2 | 211 | 11.2 | 65,724 | THE BIG SIX BABYYYYYY!!!! |
-| 12 | [nadexe](https://twitch.tv/nadexe) | EN | 3/2 | 206 | 11.0 | 289,329 | GTA 6 LAUNCH DAY 🔥BEST PLAYTHROUGH POV 🌴 |
-| 13 | [xlie](https://twitch.tv/xlie) | EN | 3/2 | 156 | 11.0 | 173,831 | GTA 6 Marathon! Exploring Leonida !sub |
-| 14 | [joebuddentk](https://twitch.tv/joebuddentk) | EN | 3/2 | 156 | 11.0 | 6,777 | DR DOOM Plays GTA 6 (early access/definitely live in nz) |
-| 15 | [gevad1ch](https://twitch.tv/gevad1ch) | EN | 3/2 | 199 | 10.9 | 92,368 | !tts 💎 SUB FOR GTA VI DROPS💎EARLIEST GTA VI LIVE ACCESS IS H |
-| 16 | [soykronosgg](https://twitch.tv/soykronosgg) | ES | 3/2 | 142 | 10.9 | 50,343 | 🛑GTA 6 YA ESTA AQUI POR FINNN🛑 |
-| 17 | [npen](https://twitch.tv/npen) | EN | 3/2 | 107 | 10.9 | 243,599 | GTA 6 has dropped while I'm in New Zealand!!! + HUGE ANNOUNC |
-| 18 | [xmurdashowx](https://twitch.tv/xmurdashowx) | EN | 3/2 | 116 | 10.8 | 20,878 | I ALREADY got Lucia PREGNANT!😭💀 GTA 6 LIVE (DROPS ENABLED) |
-| 19 | [sparking_](https://twitch.tv/sparking_) | PT | 3/2 | 302 | 9.5 | 73,557 | [+18]  13 anos depois.. GTA 6 finalmente chegou!  /--/ !live |
-| 20 | [wilianbonnerlol](https://twitch.tv/wilianbonnerlol) | PT | 3/2 | 152 | 9.2 | 166,177 | GTA 6 VEM |
-| 21 | [viperr97](https://twitch.tv/viperr97) | ES | 3/2 | 184 | 8.4 | 29,248 | 🌎🌴 [DROPS] JUGANDO GTA VI EN VIVO! YA SALIÓ! (MARATÓN DÍA 1/ |
-| 22 | [drsteinman](https://twitch.tv/drsteinman) | EN | 3/2 | 90 | 6.2 | 37,204 | DROPS BIRTHDAY AND GTA 6. LIFE IS GOOD? Sub for emotes! Live |
-| 23 | [neikoohh_](https://twitch.tv/neikoohh_) | FR | 3/2 | 240 | 5.7 | 159,823 | ON EST ENFIN SUR GTA 6 !!! 🔥 PREMIÈRE DÉCOUVERTE DU JEU ! (! |
-| 24 | [raubkatze](https://twitch.tv/raubkatze) | DE | 3/2 | 142 | 5.7 | 11,233 | 🦩 Die Flamingos wissen zu viel. 🐊 / !kofi !merch |
-| 25 | [mishhopettv](https://twitch.tv/mishhopettv) | EN | 3/2 | 113 | 5.5 | 11,624 | ⭕ GTA6 LETS GOO⭕#PARTNER #GOODVIBES |
-| 26 | [moodybandz324](https://twitch.tv/moodybandz324) | EN | 3/2 | 121 | 4.9 | 5,654 | FREESMURK🌉13YEARS LATER GTA6 Wednesday 💀🌉Goop Gang is backkk |
-| 27 | [jussef](https://twitch.tv/jussef) | DE | 3/2 | 307 | 3.7 | 155,055 | GTA 6 AUS THAILAND🌴 DROPS AKTIV🔥 / !donation !tippz !elusa ! |
-| 28 | [j0kice](https://twitch.tv/j0kice) | FR | 3/2 | 113 | 3.7 | 6,547 | LE JEU DE L'ANNÉE |
-| 29 | [deadmeurt_qc](https://twitch.tv/deadmeurt_qc) | FR | 3/2 | 121 | 3.5 | 7,043 | [FR/QC] 🔥L'épopée GTA 6 #01 / On va vivre une aventure exept |
-| 30 | [royalcreates](https://twitch.tv/royalcreates) | EN | 3/2 | 199 | 3.2 | 17,333 | VIDEO GAME CHRISTMAS IS HERE~ FIRST LOOK! FIRST PLAYTHROUGH~ |
-| 31 | [3ldiablo89](https://twitch.tv/3ldiablo89) | IT | 3/2 | 163 | 3.0 | 51,074 | DAY TEN / MARATONA ESTENDIBILE / !ruota !co2 !giveaway |
-| 32 | [gtamen](https://twitch.tv/gtamen) | EN | 3/2 | 150 | 2.9 | 43,092 | [DROPS] BEST GTA 6 POV / FASTEST DROPS / HYPE LEVELS MAXIMUM |
-| 33 | [noahzett28](https://twitch.tv/noahzett28) | DE | 3/2 | 52 | 2.5 | 216,888 | [DROPS AKTIVIERT] [4K] 🔒 ERST BEI 100% DARF ICH RAUS 🦩🌴 GTA  |
-| 34 | [priscillaliaud](https://twitch.tv/priscillaliaud) | FR | 3/2 | 233 | 2.3 | 162,103 | Enfin!! On joue à partir de 21h et on discute sans tabou 🥕🍓  |
-| 35 | [aaronrheins](https://twitch.tv/aaronrheins) | EN | 3/2 | 204 | 2.1 | 24,804 | FLYING EVERY PLANE IN GTA VI + Giving Away Copies of the Gam |
-| 36 | [bgm_fps](https://twitch.tv/bgm_fps) | PT | 2/2 | 132 | 23.2 | 61,167 | 🚨 (DROPS ON)🚨 ASSIM que liberar GTA 6  >> !SORTEIOGTA 🔥 MENS |
-| 37 | [todurooficial](https://twitch.tv/todurooficial) | PT | 2/2 | 325 | 20.3 | 89,847 | JOGANDO GTA 6 ANTES DO LANÇAMENTO NO BRASIL! 🔴AO VIVO🔴 GTA 6 |
-| 38 | [nokedorak](https://twitch.tv/nokedorak) | FR | 2/2 | 428 | 19.0 | 33,644 | 1 MOIS SANS JAMAIS FERMER LE STREAM → J'AI PRIS L'AVION POUR |
-| 39 | [woolleywammoth](https://twitch.tv/woolleywammoth) | EN | 2/2 | 55 | 18.6 | 7,261 | 🔥 GTA 6 FIRST PLAYTHROUGH! SUBATHON DAY 2! EVERY SUB EXTENDS |
-| 40 | [fanta](https://twitch.tv/fanta) | EN | 2/2 | 101 | 17.8 | 232,356 | 24hr GTA 6 MARATHON!🤯/ !sigs !Build !6'1 !6'2 !6'3 !6'4 |
+| 1 | [bgm_fps](https://twitch.tv/bgm_fps) | PT | 2/2 | 132 | 23.2 | 61,167 | 🚨 (DROPS ON)🚨 ASSIM que liberar GTA 6  >> !SORTEIOGTA 🔥 MENS |
+| 2 | [todurooficial](https://twitch.tv/todurooficial) | PT | 2/2 | 325 | 20.3 | 89,847 | JOGANDO GTA 6 ANTES DO LANÇAMENTO NO BRASIL! 🔴AO VIVO🔴 GTA 6 |
+| 3 | [nokedorak](https://twitch.tv/nokedorak) | FR | 2/2 | 428 | 19.0 | 33,644 | 1 MOIS SANS JAMAIS FERMER LE STREAM → J'AI PRIS L'AVION POUR |
+| 4 | [woolleywammoth](https://twitch.tv/woolleywammoth) | EN | 2/2 | 55 | 18.6 | 7,261 | 🔥 GTA 6 FIRST PLAYTHROUGH! SUBATHON DAY 2! EVERY SUB EXTENDS |
+| 5 | [fanta](https://twitch.tv/fanta) | EN | 2/2 | 101 | 17.8 | 232,356 | 24hr GTA 6 MARATHON!🤯/ !sigs !Build !6'1 !6'2 !6'3 !6'4 |
+| 6 | [balvin](https://twitch.tv/balvin) | EN | 2/2 | 302 | 14.1 | 15,468 | VICE CITY WE'RE HERE!!!!!!!!! MFKLJEDSNMKJLFSDNJKLF (XBOX SE |
+| 7 | [smtxlost](https://twitch.tv/smtxlost) | DE | 2/2 | 410 | 13.4 | 36,939 | GTA 6 OPEN END STREAM I 12 Stunden+ I !shop I TTS=10 |
+| 8 | [xnikgo](https://twitch.tv/xnikgo) | DE | 2/2 | 312 | 13.4 | 60,613 | ✅DROPS🚨GTA 6 Ist ENDLICH Da 12 UHR🚨 !holy |
+| 9 | [shukznorris](https://twitch.tv/shukznorris) | DE | 2/2 | 194 | 13.1 | 59,444 | [✅DROPS] GRINDATHON Tag 29🔥/ #1 CoD DE Player / !scuf !Disco |
+| 10 | [kibeyz](https://twitch.tv/kibeyz) | IT | 2/2 | 106 | 13.0 | 29,286 | ✨GTA6 A MEZZOGIORNO✨/ T250 pov 📍/ 6th EWC🧢/ !youtube !pad !c |
+| 11 | [olli43](https://twitch.tv/olli43) | EN | 2/2 | 392 | 12.9 | 28,877 | !drops GTA 6 Mega Stream - 141 Challenges, Till we drop or 1 |
+| 12 | [its_bitz](https://twitch.tv/its_bitz) | EN | 2/2 | 348 | 12.9 | 27,466 | GTA 6 IS FINALLY HERE!! 🦩 Schedule Is Gone 🐊 !Bitzpedia 🔫 !N |
+| 13 | [diogolingua](https://twitch.tv/diogolingua) | PT | 2/2 | 98 | 12.7 | 15,148 | 🟢 LINGUA ON: 24H DE GTA 6 👅  !pix !comandos |
+| 14 | [denissnidertv](https://twitch.tv/denissnidertv) | PT | 2/2 | 258 | 12.6 | 202,939 | HOJE É DIA DE GTA 6!!! ESTOU NA NOVA ZELANDIA, EXCELENTE DIA |
+| 15 | [kingkongor](https://twitch.tv/kingkongor) | EN | 2/2 | 152 | 12.6 | 146,423 | [!Drops+Gift] GTA 6 LAUNCH IN NEW ZEALAND Pog-> !Opera🔴!Plus |
+| 16 | [elanip](https://twitch.tv/elanip) | EN | 2/2 | 104 | 12.5 | 45,468 | GTA 6 LAUNCH DAY! Playing GTA 6 For The First Time |
+| 17 | [biahkov](https://twitch.tv/biahkov) | PT | 2/2 | 427 | 12.4 | 17,005 | 💜 LIVE SEMI INFINITA NO LANÇAMENTO DO GTA6!! DONATE DE VIDEO |
+| 18 | [frenchie](https://twitch.tv/frenchie) | EN | 2/2 | 138 | 12.4 | 7,597 | GTA VI Exploration - GTA 6 GIVEAWAYS |
+| 19 | [nicoinfinite](https://twitch.tv/nicoinfinite) | EN | 2/2 | 284 | 12.3 | 31,593 | DROPS ON - GTA 6 IS HERE! 24 HOUR MARATHON |
+| 20 | [ninothedon](https://twitch.tv/ninothedon) | EN | 2/2 | 132 | 12.3 | 7,056 | TWITCH GTA 6 GIVEAWAY🌴🌴GRAND THEFT AUTO VI🥳🥳 |
+| 21 | [bearpig](https://twitch.tv/bearpig) | EN | 2/2 | 56 | 12.3 | 114,276 | 🔴 GTA 6 is FINALLY Here! / Minimal Commentary / !yt 🔴 |
+| 22 | [codenamepizza](https://twitch.tv/codenamepizza) | EN | 2/2 | 123 | 12.2 | 19,882 | ⭐GTA 6 SPEEDRUN!⭐FULL STORY PLAYTHROUGH⭐ |
+| 23 | [hiro_o](https://twitch.tv/hiro_o) | PT | 2/2 | 86 | 12.1 | 39,399 | 😲🚨GTA VI à 60fps🚨😲❗SORTEIO GTA VI / R$550❗META ANIVERSÁRIO T |
+| 24 | [jsmoothhd](https://twitch.tv/jsmoothhd) | EN | 2/2 | 64 | 12.1 | 214,456 | (DROPS) GTA 6 IS FINALLY HERE!! !Drops / !Patreon !Film !Soc |
+| 25 | [sserratv](https://twitch.tv/sserratv) | IT | 2/2 | 224 | 12.0 | 18,372 | 🔥DROP GTA VI🔥MARATONA START 12H ESTENDIBILE🎡2 PAD GTA 6 GIFT |
+| 26 | [lankmandan](https://twitch.tv/lankmandan) | EN | 2/2 | 144 | 12.0 | 32,347 | 🔴 GTA 6 LAUNCH STREAM 🔴 First Time Playthrough & Exploration |
+| 27 | [lbmm](https://twitch.tv/lbmm) | EN | 2/2 | 253 | 11.9 | 72,770 | GTA 6 DAY ⚡️ NOT RUSHING ⚡️PROPER PLAYING⚡ 322/365 |
+| 28 | [n4nofps](https://twitch.tv/n4nofps) | PT | 2/2 | 218 | 11.9 | 140,283 | [DROPS ON] GTA 6 FINALMENTE CHEGOU 🌴 JOGANDO PELA PRIMEIRA V |
+| 29 | [sangras](https://twitch.tv/sangras) | PT | 2/2 | 150 | 11.9 | 39,990 | [DROPS ON] 🟠O GTA 6 CHEGOU! 1º DIA DE HISTÓRIA!🟠 !cronograma |
+| 30 | [dimeloov](https://twitch.tv/dimeloov) | DE | 2/2 | 108 | 11.9 | 20,390 | 1 TAGE bis zum FACE REVEAL! 👀 GTA 6 HYPE 🔥 + MEGA !Gewinnspi |
+| 31 | [thexanos](https://twitch.tv/thexanos) | EN | 2/2 | 75 | 11.9 | 12,421 | GTA VI STARTS!!!!!!!!!!!!!!! - !brite !discord |
+| 32 | [sinapsisyt](https://twitch.tv/sinapsisyt) | ES | 2/2 | 54 | 11.9 | 206,283 | GAMEPLAY GTA 6 DESDE NUEVA ZELANDA |
+| 33 | [samham](https://twitch.tv/samham) | EN | 2/2 | 372 | 11.8 | 135,608 | PLAYING GTA 6 EARLY! 🔴 GTA 6 MARATHON DAY 1 🔴 BEST GTA POV 🔴 |
+| 34 | [wannanerd](https://twitch.tv/wannanerd) | EN | 2/2 | 220 | 11.8 | 79,150 | GTA 6 LAUNCH 🚀 CLIPPER LEADERBOARD + WIN FREE GTA 6! |
+| 35 | [imchloes2](https://twitch.tv/imchloes2) | PT | 2/2 | 218 | 11.8 | 24,019 | 💙🌺(✅KEY DROPS) MARATONA GRAND THEFT AUTO VI! MAIOR LANÇAMENT |
+| 36 | [rida](https://twitch.tv/rida) | FR | 2/2 | 138 | 11.8 | 62,520 | [ DROPS✅]  GTA VI EST LAAAA 🔥 !900  !Burn !subgoals !Holy !m |
+| 37 | [bloquinhotv](https://twitch.tv/bloquinhotv) | PT | 2/2 | 294 | 11.7 | 100,608 | JOGANDO GTA VI / !sociais !pix |
+| 38 | [eikarrramba](https://twitch.tv/eikarrramba) | DE | 2/2 | 168 | 11.7 | 56,339 | ✅ DROPS ✅ Subgift -  DROPS! Xbox Series X! GTA VI, Live aus  |
+| 39 | [stahtistics_](https://twitch.tv/stahtistics_) | EN | 2/2 | 90 | 11.7 | 175,145 | LUCIA GET HERE NOW / GTA 6 EARLY ACCESS / WATCH FOR GTA 6 FR |
+| 40 | [allyz1nfps](https://twitch.tv/allyz1nfps) | PT | 2/2 | 132 | 11.6 | 23,261 | [1440p] 🚨FINALMENTE LANÇOU O GTA VI, LIVE INFINITA !pixathon |
 
 ## Notlar
 - Rusça yayınlar listeye alınmadı; ödeme ve yaptırım konuları ayrıca değerlendirilmeli.

@@ -67,7 +67,8 @@ def live_streams(gid):
         out += res.get("data", [])
         cursor = res.get("pagination", {}).get("cursor")
         if not cursor or not res.get("data"):
-            return out
+            # sayfalama sirasinda izleyici sayisi degisen kanal iki kez gelebilir: tekillestir
+            return list({x["user_id"]: x for x in out}.values())
 
 
 def users(ids):
@@ -124,6 +125,7 @@ def main():
     with open(path, newline="", encoding="utf-8") as f:
         allrows = list(csv.DictReader(f))
     agg = {}
+    allrows = list({(r["tarama"], r["kanal"], r["oyun"]): r for r in allrows}.values())
     for r in allrows:
         k = r["kanal"]
         g = agg.setdefault(k, {"kanal": k, "dil": r["dil"], "gorulme": 0, "izleyici_toplam": 0,
