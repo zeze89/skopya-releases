@@ -38,8 +38,8 @@ if (-not (Test-Path ".\yunet.onnx")) {
     Invoke-WebRequest -Uri "https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx" -OutFile ".\yunet.onnx"
 }
 
-Adim "Konusma modeli (large-v3, ~3 GB) indiriliyor"
-& .\venv\Scripts\python.exe -c "from faster_whisper import WhisperModel; WhisperModel('large-v3', device='cpu', compute_type='int8'); print('large-v3 hazir')"
+Adim "Konusma modeli (large-v3-turbo, ~1.6 GB) indiriliyor"
+& .\venv\Scripts\python.exe -c "from faster_whisper import WhisperModel; WhisperModel('large-v3-turbo', device='cpu', compute_type='int8'); print('large-v3-turbo hazir')"
 
 Adim "Puanlama modeli (Qwen3 30B-A3B, ~19 GB) indiriliyor"
 try { Invoke-RestMethod "http://127.0.0.1:11434/api/version" -TimeoutSec 3 | Out-Null }
@@ -58,7 +58,8 @@ $fiziksel = (Get-CimInstance Win32_Processor | Measure-Object -Property NumberOf
 @"
 @echo off
 rem Kullanim: klip.cmd video.mp4 cikti_klasoru 3
-set KLIP_WHISPER=large-v3
+set KLIP_WHISPER=large-v3-turbo
+set HF_HUB_DISABLE_SYMLINKS_WARNING=1
 set KLIP_MODEL=$model
 set KLIP_THREADS=$fiziksel
 "%~dp0venv\Scripts\python.exe" "%~dp0klip.py" %*
@@ -66,4 +67,4 @@ set KLIP_THREADS=$fiziksel
 
 Adim "Kurulum tamam"
 Write-Host "Ornek kullanim:  .\klip.cmd kaynak.webm cikti 3"
-Write-Host "Ayarlar: konusma modeli large-v3, puanlama modeli $model, $fiziksel islemci cekirdegi."
+Write-Host "Ayarlar: konusma modeli large-v3-turbo, puanlama modeli $model, $fiziksel islemci cekirdegi."

@@ -27,7 +27,7 @@ Betik Python, FFmpeg ve Ollama'yı winget ile kurar. Ardından konuşma modeli o
 
 | Değişken | Varsayılan | Açıklama |
 |---|---|---|
-| `KLIP_WHISPER` | `small` | Konuşma modeli. Güçlü makinede `large-v3`. |
+| `KLIP_WHISPER` | `small` | Konuşma modeli. Uzun yayınlar için `large-v3-turbo` önerilir: `large-v3`'e yakın kalite, birkaç kat hızlı. `large-v3` işlemcide gerçek zamandan yavaş çalışır. |
 | `KLIP_MODEL` | `qwen3clip` | Ollama model adı. |
 | `KLIP_THREADS` | çekirdek sayısının yarısı | Yazıya çevirme ve puanlama için iş parçacığı. |
 | `KLIP_DUZEN` | `konusma` | `konusma`: konuşmacının yüzüne göre 9:16 kırpar. `oyun`: üstte yüz kamerası, altta oyunun ortası. Yüz kamerası yoksa oyunun ortası tam dikey kırpılır. |
@@ -53,3 +53,10 @@ $env:KLIP_DUZEN="oyun"; .\klip.cmd yayin.mp4 cikti 5
 ## Test sonucu (18 Kasım 2026, 4 çekirdekli bulut makinesi)
 
 CC BY lisanslı 1.170 saniyelik konuşma: yazıya çevirme 227 sn, puanlama 46 sn, kesme ve altyazı 20 sn, toplam 294 sn. 192 aday pencere, 9 tanesi yüzlü, 3 klip (25–30 sn). Klip 3'te slayt kırpma sorunu görüldü.
+
+## Test sonucu (18 Kasım 2026, Threadripper 3960X, 128 GB, yalnızca işlemci)
+
+10 dakikalık aynı konuşma (`test-video/`):
+- `large-v3` ile yazıya çevirme yaklaşık 14 dakika sürdü (gerçek zamandan yavaş). Gece yayınları için `large-v3-turbo` kullanın.
+- Qwen3 30B-A3B ile puanlama ve 3 klibin kesilmesi: 63 sn. 134 aday, 4'ü yüzlü, 3 klip.
+- Ollama, model RX 550'ye yüklenmeye çalışınca çöktü (`0xc0000005`). Çözüm: `KLIP_NUM_GPU=0` (varsayılan).

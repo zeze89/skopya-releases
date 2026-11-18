@@ -65,7 +65,9 @@ def _llama(p):
     r = _LL.create_chat_completion(messages=[{"role": "user", "content": p}], temperature=0, response_format={"type": "json_object"}, max_tokens=120)
     return json.loads(r["choices"][0]["message"]["content"])
 def puan(text):
-    p = 'Bu konusma parcasi tek basina 9:16 kisa videoda izleyiciyi tutar mi? Sadece JSON ver: {"score": 1-10 tam sayi, "hook": "en fazla 8 kelimelik baslik"}\n\n' + text[:1500]
+    # Ingilizce talimat; baslik konusmanin kendi dilinde yazilir (uluslararasi yayincilar)
+    p = ('Would this excerpt hold a viewer on its own as a 9:16 short video? Reply with JSON only: '
+         '{"score": integer 1-10, "hook": "title of at most 8 words, written in the same language as the excerpt"}\n\n' + text[:1500])
     model = os.environ.get("KLIP_MODEL", "qwen3clip")
     body = json.dumps({"model": model, "messages": [{"role": "user", "content": p}], "stream": False, "format": "json", "keep_alive": "30m",
                        # ekran karti kullanilmaz (RX 550 gibi zayif kartlarda Ollama coker); tum is islemcide
