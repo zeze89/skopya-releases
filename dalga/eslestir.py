@@ -29,6 +29,12 @@ MAJOR = {
     "warner": "Warner", "atlantic": "Warner", "elektra": "Warner", "reprise": "Warner",
     "parlophone": "Warner", "rhino": "Warner", "asylum": "Warner", "sire": "Warner",
     "nonesuch": "Warner", "atco": "Warner", "big beat": "Warner", "wea": "Warner",
+    # bugun buyuk uce ait olan eski/tarihi plak sirketleri
+    "okeh": "Sony", "cbs": "Sony", "monument": "Sony", "rca victor": "Sony", "bmg": "Sony", "laface": "Sony",
+    "chess": "Universal", "checker": "Universal", "cadet": "Universal", "philips": "Universal", "vertigo": "Universal",
+    "polygram": "Universal", "london": "Universal", "abc": "Universal", "dot": "Universal", "uni": "Universal",
+    "chrysalis": "Warner", "cotillion": "Warner", "warner bros": "Warner", "eastwest": "Warner", "roadrunner": "Warner",
+    "def american": "Universal", "geffen": "Universal", "fania": "bagimsiz-buyuk", "concord": "bagimsiz-buyuk",
 }
 
 
