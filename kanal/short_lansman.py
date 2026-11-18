@@ -18,7 +18,8 @@ LANGS = [("English", 849833), ("Spanish", 844281), ("German", 306173),
 TOP = [("IlloJuan", 344103), ("Rubius", 239275), ("alanzoka", 181605)]
 SOURCE = "Source: Twitch API snapshots, Nov 18 2026 (UTC)"
 import os
-HANDLE = os.environ.get("KANAL_HANDLE", "ZeteraClipso")  # bos birakilirsa kanal adi yazilmaz
+HANDLE = os.environ.get("KANAL_HANDLE", "ZeteraClipso")
+CTA = os.environ.get("KANAL_CTA", "Follow for daily GTA 6 stats")  # kapanis cagrisi  # bos birakilirsa kanal adi yazilmaz
 
 # --- gorunum ---
 BG, BG2 = (14, 12, 32), (38, 18, 64)
@@ -133,7 +134,7 @@ def scene_top(d, t):  # 16-21 sn: en buyuk yayinlar
         text(d, (x + 160, y + 62), name, font(FD, 56), WHITE, "lm")
         text(d, (x + 160, y + 128), fmt(v) + " viewers", font(FB, 42), MUTED, "lm")
     if t > 2.6:
-        text(d, (W // 2, 1560), "Follow for daily GTA 6 stats", font(FD, 58), TEAL, "mm")
+        text(d, (W // 2, 1560), CTA, font(FD, 58), TEAL, "mm")
 
 
 SCENES = [(0, 6, scene_timeline), (6, 10, scene_viewers), (10, 16, scene_langs), (16, 21, scene_top)]
