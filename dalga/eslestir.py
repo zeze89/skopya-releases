@@ -66,9 +66,19 @@ def label_group(names):
     return "bagimsiz" if names else "bilinmiyor"
 
 
+def main_artist(artist):
+    # "A ft. B", "A feat. B", "A & B", "A x B", "A, B" -> arama icin ana sanatci "A"
+    return re.split(r"\s+(?:ft\.?|feat\.?|featuring|x|&|and)\s+|,", artist, flags=re.I)[0].strip()
+
+
 def match(artist, title):
-    q = f'recording:"{esc(title)}" AND artist:"{esc(artist)}"'
-    res = get("recording", query=q, limit=25).get("recordings", [])
+    res = []
+    # once tam adla ara (grup adlari "Earth, Wind & Fire" bozulmasin), bulamazsa ana sanatciyla
+    for a in dict.fromkeys([artist, main_artist(artist)]):
+        q = f'recording:"{esc(title)}" AND artist:"{esc(a)}"'
+        res = get("recording", query=q, limit=25).get("recordings", [])
+        if res and max(int(r.get("score", 0)) for r in res) >= 90:
+            break
     if not res:
         return None
     top = max(int(r.get("score", 0)) for r in res)
