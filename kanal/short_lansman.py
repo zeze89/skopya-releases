@@ -17,7 +17,8 @@ LANGS = [("English", 849833), ("Spanish", 844281), ("German", 306173),
          ("Portuguese", 260697), ("French", 196450), ("Russian", 180048)]
 TOP = [("IlloJuan", 344103), ("Rubius", 239275), ("alanzoka", 181605)]
 SOURCE = "Source: Twitch API snapshots, Nov 18 2026 (UTC)"
-HANDLE = "ZeteraClipso"
+import os
+HANDLE = os.environ.get("KANAL_HANDLE", "ZeteraClipso")  # bos birakilirsa kanal adi yazilmaz
 
 # --- gorunum ---
 BG, BG2 = (14, 12, 32), (38, 18, 64)
@@ -66,7 +67,8 @@ def chrome(d, t):
     text(d, (W // 2, 120), "GTA 6 LAUNCH NIGHT", font(FD, 64), PINK, "mm")
     text(d, (W // 2, 195), "on Twitch, by the numbers", font(FB, 44), MUTED, "mm")
     text(d, (W // 2, H - 150), SOURCE, font(FB, 30), MUTED, "mm")
-    text(d, (W // 2, H - 95), "@" + HANDLE, font(FB, 34), TEAL, "mm")
+    if HANDLE:
+        text(d, (W // 2, H - 95), "@" + HANDLE, font(FB, 34), TEAL, "mm")
 
 
 def fmt(n):
