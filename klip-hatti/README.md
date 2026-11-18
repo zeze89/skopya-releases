@@ -31,6 +31,7 @@ Betik Python, FFmpeg ve Ollama'yı winget ile kurar. Ardından konuşma modeli o
 | `KLIP_MODEL` | `qwen3clip` | Ollama model adı. |
 | `KLIP_THREADS` | çekirdek sayısının yarısı | Yazıya çevirme ve puanlama için iş parçacığı. |
 | `KLIP_DUZEN` | `konusma` | `konusma`: konuşmacının yüzüne göre 9:16 kırpar. `oyun`: üstte yüz kamerası, altta oyunun ortası. Yüz kamerası yoksa oyunun ortası tam dikey kırpılır. |
+| `KLIP_NUM_GPU` | `0` | Ollama'nın ekran kartına yükleyeceği katman sayısı. 0 = yalnızca işlemci. Zayıf ekran kartlarında (ör. RX 550) Ollama çöktüğü için varsayılan 0. |
 | `KLIP_YUZ_ORANI` | `0.8` | Bir pencerenin aday sayılması için yayıncının/konuşmacının göründüğü süre oranı. |
 
 Ollama çalışmıyorsa `klip.py` aynı klasördeki `qwen3-4b.gguf` dosyasını llama-cpp-python ile kullanır.

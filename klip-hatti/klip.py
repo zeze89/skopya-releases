@@ -67,7 +67,9 @@ def _llama(p):
 def puan(text):
     p = 'Bu konusma parcasi tek basina 9:16 kisa videoda izleyiciyi tutar mi? Sadece JSON ver: {"score": 1-10 tam sayi, "hook": "en fazla 8 kelimelik baslik"}\n\n' + text[:1500]
     model = os.environ.get("KLIP_MODEL", "qwen3clip")
-    body = json.dumps({"model": model, "messages": [{"role": "user", "content": p}], "stream": False, "format": "json", "keep_alive": "30m"}).encode()
+    body = json.dumps({"model": model, "messages": [{"role": "user", "content": p}], "stream": False, "format": "json", "keep_alive": "30m",
+                       # ekran karti kullanilmaz (RX 550 gibi zayif kartlarda Ollama coker); tum is islemcide
+                       "options": {"num_gpu": int(os.environ.get("KLIP_NUM_GPU", "0")), "num_thread": THREADS}}).encode()
     try:
         # buyuk model ilk cagrida diskten yuklenir; bekleme suresi uzun tutulur
         r = urllib.request.urlopen(urllib.request.Request("http://127.0.0.1:11434/api/chat", body, {"Content-Type": "application/json"}), timeout=int(os.environ.get("KLIP_LLM_TIMEOUT", "900")))
