@@ -71,6 +71,41 @@ Bir yorum birden fazla konuya girebilir. Sınıflama anahtar kelimeyle yapıldı
 7. **Beklenti yönetimi.** Mağaza açıklamasında ve ilk açılışta "NightmareTV kanal içermez, kendi playlist'inizi eklersiniz" mesajı; "dolandırıcı" yorumlarını ve App Review sorunlarını azaltır.
 8. **Görünür destek.** App Store Connect'ten yorumlara yanıt verin; uygulama içinde destek formu.
 
+## 5. Kullanıcılar neyi seviyor? (en memnun üç uygulama: UHF, IPTV Pro Play List, iMPlayer)
+
+4–5 yıldızlı 472 yorum. Yazılı övgülerin büyük kısmı UHF'den; IPTV Pro'nun olumlu yorumları çoğunlukla tek kelime.
+
+| Övülen konu | Yorum | Oran |
+|---|---|---|
+| Arayüz / tasarım / kullanım kolaylığı | 59 | %12.5 |
+| Destek / geliştirici ilgisi | 45 | %9.5 |
+| Apple TV / tvOS deneyimi | 39 | %8.3 |
+| Stabilite / sorunsuz çalışma | 38 | %8.1 |
+| Favoriler / kişiselleştirme | 30 | %6.4 |
+| Hız / hızlı kanal geçişi | 25 | %5.3 |
+| Adil fiyat / tek seferlik ödeme | 25 | %5.3 |
+| Catch-up / geri sarma / kayıt | 24 | %5.1 |
+| Çoklu cihaz / iCloud senkron | 19 | %4.0 |
+| EPG / yayın akışı | 18 | %3.8 |
+| Görüntü kalitesi / format desteği | 13 | %2.8 |
+| Multi-view / çoklu ekran | 7 | %1.5 |
+
+### UHF neden kazanıyor?
+- **Apple'a özgü, cilalı arayüz:** "perfect UI", "built for Apple TV", "works well with Apple". Rakiplerin çoğu eski ve Android'den taşınmış hissi veriyor.
+- **Geliştirici ilgisi:** "Developers take the feedback seriously", "always updating". Yeni bir Apple cihazına ("Duo") hızlı uyum yorumlarda ayrıca övülüyor.
+- **Ömür boyu satın alma, evdeki birden çok TV'de geçerli:** "Buy a lifetime membership", "lifetime use on multiple TVs".
+- **Birden çok playlist desteği** ve tutarlı çalışma.
+
+### Memnun kullanıcıların bile istediği özellikler (NightmareTV için hazır fikirler)
+- Mac sürümünde resim içinde resim (PiP)
+- Bir playlist için birden çok EPG kaynağı
+- İndirilen filmlerde altyazının kalıcı olması
+- Mobil veride daha kararlı oynatma (Wi-Fi'da iyi, mobilde donuyor)
+- Ses parçalarının karışmaması (ses senkron sorunları)
+
+### NightmareTV için çıkarım
+Pazarın şikâyet tarafı (bölüm 2) ile övgü tarafı aynı noktada buluşuyor: **adil ve net fiyat + Apple'a özgü cilalı deneyim + hızlı ilgilenen geliştirici.** UHF bunu yapıyor ve yazılı yorumlarda açık ara önde, ama Türkiye mağazasında hiç puanı yok. Türkçe arayüz, Türkçe destek ve TR fiyatlandırmasıyla bu boşluk NightmareTV için doğrudan bir fırsat.
+
 ## 4. Sınırlar
 - Yalnızca en yeni yorumlar okundu (ülke başına en fazla 500). Eski dönem memnuniyeti yansımayabilir.
 - Gelir ve indirme sayıları Apple tarafından yayımlanmaz; bu raporda tahmin yok.
